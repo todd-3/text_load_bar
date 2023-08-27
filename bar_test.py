@@ -9,7 +9,7 @@ if __name__ == "__main__":
     t = LoadingBar(total=l, prefix="loading", length=30)
 
     for i in range(l):
-        t.increment(1)
+        t(1)
         sleep(0.2)
 
     print("done")

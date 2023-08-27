@@ -12,7 +12,7 @@ __version__ = 0.3
 
 class LoadingBar:
 
-    def __init__(self, total: int, prefix: str = "", decimals:int = 2, length:int = 25,
+    def __init__(self, total:int, prefix:str = "", decimals:int = 2, length:int = 25,
                  auto_size:bool = False, fill:str = "█"):
         from os import system
         system("")  # sets console to allow ansi control characters
@@ -30,7 +30,10 @@ class LoadingBar:
         if auto_size:
             self.auto_size()
 
-    def increment(self, counter_increment: int = 0):
+    def __call__(self, inc_val:int):
+        self.increment(counter_increment=inc_val)
+
+    def increment(self, counter_increment:int = 0):
         self.counter += counter_increment  # increments counter
 
         # fills in format string with current percentage complete
