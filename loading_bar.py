@@ -7,14 +7,15 @@ Provides a simple text based loading bar of adjustable size
 Based on code from https://gist.github.com/greenstick/b23e475d2bfdc3a82e34eaa1f6781ee4
 and https://stackoverflow.com/a/34325723
 """
+from os import system
 
 __version__ = 0.3
 
 class LoadingBar:
 
-    def __init__(self, total:int, prefix:str = "", decimals:int = 2, length:int = 25,
-                 auto_size:bool = False, fill:str = "█"):
-        from os import system
+    def __init__(self,
+                 total:int, prefix:str = "", decimals:int = 2,
+                 length:int = 25, auto_size:bool = False, fill:str = "█"):
         system("")  # sets console to allow ansi control characters
 
         self.total = total
@@ -30,10 +31,10 @@ class LoadingBar:
         if auto_size:
             self.auto_size()
 
-    def __call__(self, inc_val:int):
+    def __call__(self, inc_val:int = 1):
         self.increment(counter_increment=inc_val)
 
-    def increment(self, counter_increment:int = 0):
+    def increment(self, counter_increment:int = 1):
         self.counter += counter_increment  # increments counter
 
         # fills in format string with current percentage complete
