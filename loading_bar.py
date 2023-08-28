@@ -34,6 +34,19 @@ class LoadingBar:
     def __call__(self, inc_val:int = 1):
         self.increment(counter_increment=inc_val)
 
+    @property
+    def total(self):
+        return self._total
+
+    @total.setter
+    def total(self, val):
+        """ensures the total is int or float and > 1"""
+        if not isinstance(val, int) or not isinstance(val, float):
+            return TypeError("total must have a type of int or float")
+        if not val > 1:
+            return ValueError("total must have a value greater than 1")
+        self._total = int(val)
+
     def increment(self, counter_increment:int = 1):
         self.counter += counter_increment  # increments counter
 
