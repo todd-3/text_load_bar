@@ -41,11 +41,11 @@ class LoadingBar:
     @total.setter
     def total(self, val):
         """ensures the total is int or float and > 1"""
-        if not isinstance(val, int) or not isinstance(val, float):
-            return TypeError("total must have a type of int or float")
+        if not isinstance(val, int):
+            raise TypeError("total must have a type of int")
         if not val > 1:
-            return ValueError("total must have a value greater than 1")
-        self._total = int(val)
+            raise ValueError("total must have a value greater than 1")
+        self._total = val
 
     def increment(self, counter_increment:int = 1):
         self.counter += counter_increment  # increments counter
